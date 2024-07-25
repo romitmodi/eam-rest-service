@@ -1,6 +1,7 @@
 //package com.lbg.hackathon.security;
 //
 //import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.lbg.hackathon.entity.Employee;
 //import com.lbg.hackathon.entity.Users;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,26 +26,20 @@
 //
 //	private Collection<? extends GrantedAuthority> authorities;
 //
-//	public UserDetailsImpl(Long id, String username, String email, String password,
-//						   Collection<? extends GrantedAuthority> authorities) {
+//	public UserDetailsImpl(Long id, String username, String email, String password) {
 //		this.id = id;
 //		this.username = username;
 //		this.email = email;
 //		this.password = password;
-//		this.authorities = authorities;
 //	}
 //
-//	public static UserDetailsImpl build(Users user) {
-//		List<GrantedAuthority> authorities = user.getRoles().stream()
-//				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-//				.collect(Collectors.toList());
+//	public static UserDetailsImpl build(Employee employee) {
 //
 //		return new UserDetailsImpl(
-//				user.getId(),
-//				user.getUsername(),
-//				user.getEmail(),
-//				user.getPassword(),
-//				authorities);
+//				employee.getId(),
+//				employee.getName(),
+//				employee.getEmail(),
+//				employee.getPassword());
 //	}
 //
 //	@Override

@@ -16,5 +16,7 @@ public class SignUpRequest {
 	
 	private String username;
 	private String password;
-	private Set<String> roles;
+	private String email;
+	private String empRole;
+	private Long teamId;
 }

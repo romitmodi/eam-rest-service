@@ -1,4 +1,4 @@
-package com.lbg.hackathon.entity;
+package com.lbg.hackathon.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

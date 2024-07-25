@@ -1,7 +1,9 @@
 package com.lbg.hackathon.service;
 
+import com.lbg.hackathon.entity.BusinessUnit;
 import com.lbg.hackathon.entity.TeamDetails;
 import com.lbg.hackathon.exception.ResourceNotFoundException;
+import com.lbg.hackathon.repository.BusinessRepository;
 import com.lbg.hackathon.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,19 +13,19 @@ import java.util.List;
 
 
 @Service
-public class TeamService {
+public class BusinessService {
 	
 	@Autowired
-	private TeamRepository teamRepository;
+	private BusinessRepository businessRepository;
 	
-	@Cacheable(value = "teamDetails")
-	public List<TeamDetails> getTeamDetails() throws ResourceNotFoundException {
+	@Cacheable(value = "businessDetails")
+	public List<BusinessUnit> getBusinessUnitDetails() throws ResourceNotFoundException {
 		System.out.println("Cache Test");
-		return teamRepository.findAll();
+		return businessRepository.findAll();
 	}
 	
-	public TeamDetails getTeamDetails(Long id) throws ResourceNotFoundException {
-		return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resource not found for id " + id));
+	public BusinessUnit getBusinessUnitDetails(Long id) throws ResourceNotFoundException {
+		return businessRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resource not found for id " + id));
 	}
 //
 //	public Requests saveRequest(Requests request) throws CustomException {

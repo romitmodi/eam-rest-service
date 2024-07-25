@@ -31,13 +31,10 @@ public class Users {
 	@Column(name="email")
 	private String email;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "role_users",joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
-	
-	public Users(String username,String password) {
+	public Users(String username,String password,String email) {
 		this.username = username;
 		this.password = password;
+		this.email = email;
 	}
 	
 

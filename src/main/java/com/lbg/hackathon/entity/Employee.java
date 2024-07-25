@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "employee")
 @Getter
@@ -18,6 +21,12 @@ public class Employee {
     @Column(name = "empname")
     private String name;
 
+    @Column(name="password")
+    private String password;
+
+    @Column(name="email")
+    private String email;
+
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private EmployeeRole role;
@@ -26,10 +35,21 @@ public class Employee {
     @JoinColumn(name = "teamid", referencedColumnName = "id")
     private TeamDetails teamDetails;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Set<RequestDetails> requestDetails = new HashSet<>();
+
     public Employee(String name) {
         this.name=name;
     }
 
     public Employee() {
+    }
+
+    public Employee(String username, String password, String email) {
+        this.name = username;
+        this.password = password;
+        this.email = email;
+
     }
 }

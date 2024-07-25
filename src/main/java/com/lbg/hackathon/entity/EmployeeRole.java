@@ -1,6 +1,7 @@
 package com.lbg.hackathon.entity;
 
 
+import com.lbg.hackathon.model.ERoleEmployee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

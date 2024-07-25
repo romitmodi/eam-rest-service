@@ -1,4 +1,4 @@
-package com.lbg.hackathon.entity;
+package com.lbg.hackathon.model;
 
 import java.util.List;
 
@@ -16,6 +16,5 @@ public class JwtResponse {
 	private String jwt;
 	private String id;
 	private String name;
-	private List<String> roles;
 
 }

@@ -1,6 +1,8 @@
 //package com.lbg.hackathon.security;
 //
+//import com.lbg.hackathon.entity.Employee;
 //import com.lbg.hackathon.entity.Users;
+//import com.lbg.hackathon.repository.EmployeeRepository;
 //import com.lbg.hackathon.repository.UserRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UserDetails;
@@ -15,12 +17,12 @@
 //public class UserDetailsServiceImpl implements UserDetailsService {
 //
 //	@Autowired
-//	UserRepository userRepo;
+//	EmployeeRepository userRepo;
 //
 //	@Override
 //	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //
-//		Users user = userRepo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("UserName not found"));
+//		Employee user = userRepo.findByName(username).orElseThrow(() -> new UsernameNotFoundException("UserName not found"));
 //
 //		return UserDetailsImpl.build(user);
 //	}

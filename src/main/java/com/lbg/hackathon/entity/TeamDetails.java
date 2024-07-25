@@ -21,7 +21,7 @@ public class TeamDetails {
     @Column(name="EL_ID")
     private Long elId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "labid", referencedColumnName = "labid")
-    private LabDetails labDetails;
+//    @ManyToOne(fetch = FetchType.EAGER,optional = false)
+//    @JoinColumn(name = "labid", nullable = false)
+//    private LabDetails labDetails;
 }
