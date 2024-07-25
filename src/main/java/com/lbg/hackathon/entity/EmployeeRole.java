@@ -23,10 +23,7 @@ public class EmployeeRole {
     @Column(name = "name")
     private ERoleEmployee name;
 
-    @OneToOne(mappedBy = "role")
-    private Employee employee;
-
-    public EmployeeRole() {
+	public EmployeeRole() {
 
     }
 
@@ -48,14 +45,6 @@ public class EmployeeRole {
 
     public void setName(ERoleEmployee name) {
         this.name = name;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
 }

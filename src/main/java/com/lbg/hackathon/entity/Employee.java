@@ -29,11 +29,11 @@ public class Employee {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private EmployeeRole role;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "teamid", referencedColumnName = "id")
     private TeamDetails teamDetails;
 
@@ -49,5 +49,6 @@ public class Employee {
         this.name = username;
         this.password = password;
         this.email = email;
+
     }
 }
