@@ -25,7 +25,7 @@ public class BusinessController {
     public ResponseEntity<List<BusinessUnit>> getTeams() throws ResourceNotFoundException {
 
         List<BusinessUnit> teamDetailsList = businessService.getBusinessUnitDetails();
-        if(teamDetailsList == null) {
+        if (teamDetailsList == null) {
             throw new ResourceNotFoundException("Resource Products Not found");
         }
         return new ResponseEntity<>(teamDetailsList, HttpStatus.ACCEPTED);

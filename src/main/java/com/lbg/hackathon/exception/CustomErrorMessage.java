@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomErrorMessage {
 
-	private String message;
-	private HttpStatus status;
+    private String message;
+    private HttpStatus status;
 }

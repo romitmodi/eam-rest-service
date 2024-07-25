@@ -21,26 +21,26 @@ public class Employee {
     @Column(name = "empname")
     private String name;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private EmployeeRole role;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "teamid", referencedColumnName = "id")
     private TeamDetails teamDetails;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Set<RequestDetails> requestDetails = new HashSet<>();
 
     public Employee(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     public Employee() {

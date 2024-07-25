@@ -13,10 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignUpRequest {
-	
-	private String username;
-	private String password;
-	private String email;
-	private String empRole;
-	private Long teamId;
+
+    private String username;
+    private String password;
+    private String email;
+    private String empRole;
+    private Long teamId;
 }

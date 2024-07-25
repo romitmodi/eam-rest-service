@@ -24,7 +24,7 @@ public class TeamController {
     public ResponseEntity<List<TeamDetails>> getTeams() throws ResourceNotFoundException {
 
         List<TeamDetails> teamDetailsList = teamService.getTeamDetails();
-        if(teamDetailsList == null) {
+        if (teamDetailsList == null) {
             throw new ResourceNotFoundException("Resource Products Not found");
         }
         return new ResponseEntity<>(teamDetailsList, HttpStatus.ACCEPTED);

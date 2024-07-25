@@ -23,7 +23,7 @@ public class BusinessUnit {
     @Column(name = "bu_name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "bu_id")
     private Set<LabDetails> labDetails = new HashSet<>();
 

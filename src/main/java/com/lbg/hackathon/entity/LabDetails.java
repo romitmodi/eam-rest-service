@@ -21,7 +21,7 @@ public class LabDetails {
     @Column(name = "labname")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "labid")
     private Set<TeamDetails> teamDetails = new HashSet<>();
 

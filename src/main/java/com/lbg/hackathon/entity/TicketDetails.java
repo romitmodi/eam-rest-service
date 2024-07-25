@@ -22,5 +22,5 @@ public class TicketDetails {
     @Column(name = "url")
     private String url;
 
-    
+
 }

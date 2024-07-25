@@ -12,9 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JwtResponse {
-	
-	private String jwt;
-	private String id;
-	private String name;
+
+    private String jwt;
+    private String id;
+    private String name;
 
 }

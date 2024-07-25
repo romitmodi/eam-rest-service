@@ -18,7 +18,7 @@ public class TeamDetails {
     @Column(name = "teamname")
     private String name;
 
-    @Column(name="EL_ID")
+    @Column(name = "EL_ID")
     private Long elId;
 
 //    @ManyToOne(fetch = FetchType.EAGER,optional = false)

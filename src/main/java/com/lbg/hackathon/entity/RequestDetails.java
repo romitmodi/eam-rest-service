@@ -37,13 +37,13 @@ public class RequestDetails {
     @Column(name = "requestor_role")
     private ERoleEmployee requestorRole;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "request_id")
     private Set<TicketDetails> ticketDetails = new HashSet<>();
 
     public RequestDetails(Long requestorEmpId, EStatus status) {
         this.requestCreatedBy = requestorEmpId;
-        this.status= status;
+        this.status = status;
     }
 
     public RequestDetails() {

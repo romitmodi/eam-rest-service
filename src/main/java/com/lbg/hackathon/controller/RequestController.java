@@ -33,9 +33,9 @@ public class RequestController {
         // Create new user's account
         TeamDetails teamDetails = teamService.getTeamDetails(requestDetailsDTO.getRequestorTeamId());
 
-        RequestDetails requestDetails = new RequestDetails(requestDetailsDTO.getRequestorEmpId(),EStatus.CREATED);
+        RequestDetails requestDetails = new RequestDetails(requestDetailsDTO.getRequestorEmpId(), EStatus.CREATED);
 
-        if(!ObjectUtils.isEmpty(teamDetails)) {
+        if (!ObjectUtils.isEmpty(teamDetails)) {
             requestDetails.setRequestorTeamId(teamDetails.getId());
             requestDetails.setApproverId(teamDetails.getElId());
         }
@@ -49,7 +49,7 @@ public class RequestController {
     public ResponseEntity<List<RequestDetails>> getRequests() throws ResourceNotFoundException {
 
         List<RequestDetails> requestDetailsList = requestRepository.findAll();
-        if(requestDetailsList == null) {
+        if (requestDetailsList == null) {
             throw new ResourceNotFoundException("Resource Products Not found");
         }
         return new ResponseEntity<>(requestDetailsList, HttpStatus.ACCEPTED);

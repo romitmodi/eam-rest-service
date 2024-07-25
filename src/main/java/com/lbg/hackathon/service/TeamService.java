@@ -12,19 +12,19 @@ import java.util.List;
 
 @Service
 public class TeamService {
-	
-	@Autowired
-	private TeamRepository teamRepository;
-	
-	@Cacheable(value = "teamDetails")
-	public List<TeamDetails> getTeamDetails() throws ResourceNotFoundException {
-		System.out.println("Cache Test");
-		return teamRepository.findAll();
-	}
-	
-	public TeamDetails getTeamDetails(Long id) throws ResourceNotFoundException {
-		return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resource not found for id " + id));
-	}
+
+    @Autowired
+    private TeamRepository teamRepository;
+
+    @Cacheable(value = "teamDetails")
+    public List<TeamDetails> getTeamDetails() throws ResourceNotFoundException {
+        System.out.println("Cache Test");
+        return teamRepository.findAll();
+    }
+
+    public TeamDetails getTeamDetails(Long id) throws ResourceNotFoundException {
+        return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resource not found for id " + id));
+    }
 //
 //	public Requests saveRequest(Requests request) throws CustomException {
 //		return requestRepository.save(request);

@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-	@Autowired
-	EmployeeRepository employeeRepository;
+    @Autowired
+    EmployeeRepository employeeRepository;
 
-	@Autowired
-	EmployeeRoleRepository employeeRoleRepository;
+    @Autowired
+    EmployeeRoleRepository employeeRoleRepository;
 
-	@Autowired
-	TeamService teamService;
+    @Autowired
+    TeamService teamService;
 
 
 //	@PostMapping("/signin")
@@ -44,29 +44,29 @@ public class AuthController {
 //												 userDetails.getUsername()));
 //	}
 
-	@PostMapping("/signin")
-	public ResponseEntity<?> registerUser(@Validated @RequestBody SignUpRequest signUpRequest) {
-		if (employeeRepository.existsByName(signUpRequest.getUsername())) {
-			return ResponseEntity
-					.badRequest()
-					.body(new MessageResponse("Error: Username is already taken!"));
-		}
+    @PostMapping("/signin")
+    public ResponseEntity<?> registerUser(@Validated @RequestBody SignUpRequest signUpRequest) {
+        if (employeeRepository.existsByName(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
 
-		// Create new user's account
-		Employee employee = new Employee(signUpRequest.getUsername(),
-				signUpRequest.getPassword(), signUpRequest.getEmail());
+        // Create new user's account
+        Employee employee = new Employee(signUpRequest.getUsername(),
+                signUpRequest.getPassword(), signUpRequest.getEmail());
 
-		String roleName = signUpRequest.getEmpRole();
-		EmployeeRole userRole = employeeRoleRepository.findByName(ERoleEmployee.findByName(roleName))
-				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        String roleName = signUpRequest.getEmpRole();
+        EmployeeRole userRole = employeeRoleRepository.findByName(ERoleEmployee.findByName(roleName))
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 
 
-		employee.setRole(userRole);
-		TeamDetails teamDetails = teamService.getTeamDetails(signUpRequest.getTeamId());
-		employee.setTeamDetails(teamDetails);
-		employeeRepository.save(employee);
+        employee.setRole(userRole);
+        TeamDetails teamDetails = teamService.getTeamDetails(signUpRequest.getTeamId());
+        employee.setTeamDetails(teamDetails);
+        employeeRepository.save(employee);
 
-		return ResponseEntity.ok(new MessageResponse("User signed successfully!"));
-	}
+        return ResponseEntity.ok(new MessageResponse("User signed successfully!"));
+    }
 
 }
