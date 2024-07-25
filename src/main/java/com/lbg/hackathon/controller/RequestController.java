@@ -1,5 +1,7 @@
 package com.lbg.hackathon.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
@@ -115,32 +117,18 @@ public class RequestController {
         PostMessageDTO postMessageDTO = PostMessageDTO.builder().messageType("CREATED").requestId(requestDetails1.getId())
                 .role(requestDetails1.getRequestorRole()).teamId(requestDetails1.getRequestorTeamId()).empId(requestDetails1.getRequestCreatedBy()).build();
 
-       // publishMessage(postMessageDTO.toString());
         String projectId = "lloyds-hack-grp-17";
         String topicId = "ticketCreateUpdate";
 
-        publisherExample(projectId, topicId, postMessageDTO.toString());
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(postMessageDTO);
+
+
+        publisherExample(projectId, topicId, json);
 
         return new ResponseEntity<>(requestDetails1, HttpStatus.CREATED);
     }
-
-//    public void publishMessage(String message) throws IOException {
-//
-//        ByteString byteStr = ByteString.copyFrom(message, StandardCharsets.UTF_8);
-//        PubsubMessage pubsubApiMessage = PubsubMessage.newBuilder().setData(byteStr).build();
-//
-//        Publisher publisher = Publisher.newBuilder(
-//                ProjectTopicName.of("lloyds-hack-grp-17", "ticketCreateUpdate")).build();
-//
-//        // Attempt to publish the message
-//        String responseMessage;
-//        try {
-//            publisher.publish(pubsubApiMessage).get();
-//            responseMessage = "Message published.";
-//        } catch (InterruptedException | ExecutionException e) {
-//            responseMessage = "Error publishing Pub/Sub message; see logs for more info.";
-//        }
-//    }
 
     public void publisherExample(String projectId, String topicId, String message)
             throws IOException, ExecutionException, InterruptedException {
@@ -148,13 +136,11 @@ public class RequestController {
 
         Publisher publisher = null;
         try {
-            // Create a publisher instance with default settings bound to the topic
             publisher = Publisher.newBuilder(topicName).build();
 
             ByteString data = ByteString.copyFromUtf8(message);
             PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
 
-            // Once published, returns a server-assigned message id (unique within the topic)
             ApiFuture<String> messageIdFuture = publisher.publish(pubsubMessage);
             String messageId = messageIdFuture.get();
             System.out.println("Published message ID: " + messageId);

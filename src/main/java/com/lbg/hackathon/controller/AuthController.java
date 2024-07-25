@@ -49,10 +49,10 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> registerUser(@Validated @RequestBody SignUpRequest signUpRequest) {
-        if (employeeRepository.existsByName(signUpRequest.getUsername())) {
+        if (!employeeRepository.existsByName(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Error: Username not found!"));
         }
 
         // Create new user's account
