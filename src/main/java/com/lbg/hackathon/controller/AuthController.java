@@ -56,8 +56,7 @@ public class AuthController {
         }
 
         // Create new user's account
-        Employee employee = new Employee(signUpRequest.getUsername(),
-                signUpRequest.getPassword(), signUpRequest.getEmail());
+        Employee employee = new Employee(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail());
 
         String roleName = signUpRequest.getEmpRole();
         EmployeeRole userRole = employeeRoleRepository.findByName(ERoleEmployee.findByName(roleName))

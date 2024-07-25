@@ -1,16 +1,20 @@
 package com.lbg.hackathon.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "employee")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@Table(name = "employee")
 public class Employee {
 
     @Id
@@ -43,13 +47,9 @@ public class Employee {
         this.name = name;
     }
 
-    public Employee() {
-    }
-
     public Employee(String username, String password, String email) {
         this.name = username;
         this.password = password;
         this.email = email;
-
     }
 }
