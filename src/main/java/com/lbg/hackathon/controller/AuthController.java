@@ -66,7 +66,7 @@ public class AuthController {
         employee.setRole(userRole);
         TeamDetails teamDetails = teamService.getTeamDetails(signUpRequest.getTeamId());
         employee.setTeamDetails(teamDetails);
-        employeeRepository.save(employee);
+       // employeeRepository.save(employee);
 
         return ResponseEntity.ok(new MessageResponse("User signed successfully!"));
     }
